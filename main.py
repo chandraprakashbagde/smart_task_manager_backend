@@ -2,11 +2,11 @@ from fastapi.exceptions import RequestValidationError
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from .config.database import init_db, close_db
-from .routes.user_routes import router as user_router
-from .routes.auth_routes import router as login_router
-from .utils.response_handler import validation_exception_handler
-from .services.admin_service import setup_admin_user
+from config.database import init_db, close_db
+from routes.user_routes import router as user_router
+from routes.auth_routes import router as login_router
+from utils.response_handler import validation_exception_handler
+from services.admin_service import setup_admin_user
 
 app = FastAPI()
 

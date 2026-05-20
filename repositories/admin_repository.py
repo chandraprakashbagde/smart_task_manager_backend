@@ -1,6 +1,6 @@
-from ..config import database
+from config import database
 import aiomysql
-from ..config.config import setting
+from config.config import setting
 
 
 async def create_admin():

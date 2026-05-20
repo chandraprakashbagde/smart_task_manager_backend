@@ -1,4 +1,4 @@
-from ..config import database
+from config import database
 import aiomysql
 import math
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from ..schemas.auth_schema import Login
-from ..services.auth_service import userLogin
+from schemas.auth_schema import Login
+from services.auth_service import userLogin
 
 router = APIRouter(
     prefix="/login", 

@@ -1,7 +1,7 @@
-from ..repositories.user_repository import get_user_by_email, create_user
-from ..config.config import setting
-from ..schemas.user_schema import CreateUser
-from ..utils.password_handler import pwd_cntxt
+from repositories.user_repository import get_user_by_email, create_user
+from config.config import setting
+from schemas.user_schema import CreateUser
+from utils.password_handler import pwd_cntxt
 
 # Updated function in your service layer
 async def setup_admin_user():

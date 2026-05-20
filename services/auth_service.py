@@ -1,7 +1,7 @@
-from ..repositories.user_repository import get_user_by_email
-from ..utils.response_handler import SuccessResp, FieldErrorResp
-from ..utils.password_handler import pwd_cntxt
-from ..utils.token import generate_token
+from repositories.user_repository import get_user_by_email
+from utils.response_handler import SuccessResp, FieldErrorResp
+from utils.password_handler import pwd_cntxt
+from utils.token import generate_token
 
 async def userLogin(crendetials):
     

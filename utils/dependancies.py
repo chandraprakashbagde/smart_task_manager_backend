@@ -1,8 +1,8 @@
 
-from ..utils.token import verify_token
+from utils.token import verify_token
 from fastapi import HTTPException, Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from ..utils.response_handler import FieldErrorResp
+from utils.response_handler import FieldErrorResp
 
 security = HTTPBearer(auto_error=False)
 

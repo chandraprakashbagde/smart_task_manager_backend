@@ -1,6 +1,6 @@
 from typing import List, Dict
 from fastapi.responses import JSONResponse
-from ..schemas.resp_schema import Error
+from schemas.resp_schema import Error
 
 FIELD_NAMES = {
     "f_name": "First Name",

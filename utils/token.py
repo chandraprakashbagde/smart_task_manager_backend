@@ -4,7 +4,7 @@ import hashlib      # for hashing (SHA256)
 import time         # for handling expiry
 
 
-from ..config.config import setting
+from config.config import setting
 
 # 🔐 SECRET key (very important)
 # This must be kept private. If leaked, anyone can generate valid tokens.

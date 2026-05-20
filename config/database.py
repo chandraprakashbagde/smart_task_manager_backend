@@ -1,5 +1,5 @@
 import aiomysql
-from .config import setting
+from config.config import setting
 
 pool = None
 

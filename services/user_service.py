@@ -1,6 +1,6 @@
-from ..repositories.user_repository import get_user_by_email, create_user, update_user, get_all_users, get_user_by_id,delete_user
-from ..utils.response_handler import SuccessResp, FieldErrorResp, ErrorResp
-from ..utils.password_handler import pwd_cntxt
+from repositories.user_repository import get_user_by_email, create_user, update_user, get_all_users, get_user_by_id,delete_user
+from utils.response_handler import SuccessResp, FieldErrorResp, ErrorResp
+from utils.password_handler import pwd_cntxt
 
 async def get_all(request):
     

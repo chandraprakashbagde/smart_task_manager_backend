@@ -1,8 +1,8 @@
 from typing import Dict, List, Optional
 from fastapi import APIRouter, Depends, Request, Query
-from ..schemas.user_schema import CreateUser, UpdateUser
-from ..services.user_service import get_all, create, update, fetch_profile, delete
-from ..utils.dependancies import validate_user
+from schemas.user_schema import CreateUser, UpdateUser
+from services.user_service import get_all, create, update, fetch_profile, delete
+from utils.dependancies import validate_user
 
 router = APIRouter(
     prefix="/user",

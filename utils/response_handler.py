@@ -32,7 +32,7 @@ def ErrorResp(message: str = None, data=None):
         }
     )
 
-def FieldErrorResp(errors: Dict[str, str]=[],field: str=None, message: str=None, jsnorsp=True):
+def FieldErrorResp(errors: Dict[str, str]=[],field: str=None, message: str=None, jsnorsp=True, data=None):
     errs = errors
 
     if field != None and message != None:
@@ -44,6 +44,9 @@ def FieldErrorResp(errors: Dict[str, str]=[],field: str=None, message: str=None,
                 "status": False,
                 "errors": errs,
             }
+    
+    if data is not None:
+        rspDct["data"] = data
 
     if jsnorsp ==True:
         return JSONResponse(

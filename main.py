@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from config.database import init_db, close_db
 from routes.user_routes import router as user_router
-from routes.auth_routes import router as login_router
+from routes.auth_routes import router as auth_router
 from utils.response_handler import validation_exception_handler
 from services.admin_service import setup_admin_user
 
@@ -40,5 +40,5 @@ async def shutdown():
 async def exceptionHandler(request: Request, exc: RequestValidationError):
     return await validation_exception_handler(exc)
 
-app.include_router(login_router)
+app.include_router(auth_router)
 app.include_router(user_router)

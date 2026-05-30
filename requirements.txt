@@ -1,4 +1,5 @@
 aiomysql==0.3.2
+aiosmtplib==5.1.0
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.13.0
@@ -39,10 +40,12 @@ python-dotenv==1.2.2
 python-jose==3.5.0
 python-multipart==0.0.26
 PyYAML==6.0.3
+redis==7.4.0
 rich==15.0.0
 rich-toolkit==0.19.7
 rignore==0.7.6
 rsa==4.9.1
+secure-smtplib==0.1.1
 sentry-sdk==2.58.0
 shellingham==1.5.4
 six==1.17.0

@@ -12,6 +12,8 @@ class Setting:
 
     SECRET_KEY = os.getenv("SECRET_KEY")
     TOKEN_EXPIRATION = os.getenv("TOKEN_EXPIRATION")
+    PASSWORD_RESET_TOKEN_EXPIRATION = os.getenv("PASSWORD_RESET_TOKEN_EXPIRATION")
+    
 
     ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
     ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")

@@ -10,6 +10,7 @@ from config.config import setting
 # This must be kept private. If leaked, anyone can generate valid tokens.
 SECRET = setting.SECRET_KEY
 EXPIRYTIME = setting.TOKEN_EXPIRATION
+RESET_TOKEN_EXPIRY = setting.PASSWORD_RESET_TOKEN_EXPIRATION  # 5 minutes for reset token
 
 def generate_token(userid: int, email: str):
     # ⏱ Step 1: Create expiry time (current time + 60 seconds)
@@ -85,4 +86,42 @@ def verify_token(token: str):
 
     except Exception as e:
         print(f"Error during verification: {e}")
+        return None
+
+def generate_reset_token(email: str):
+    exp_time = int(time.time()) + RESET_TOKEN_EXPIRY
+    payload = f"reset:{email}:{exp_time}".encode()
+    payload_b64 = base64.urlsafe_b64encode(payload)
+    signature = hmac.new(SECRET.encode(), payload_b64, hashlib.sha256).digest()
+    signature_b64 = base64.urlsafe_b64encode(signature)
+    token = payload_b64 + b"." + signature_b64
+    return token.decode()
+
+def verify_reset_token(token: str):
+    try:
+        parts = token.encode().split(b".")
+        if len(parts) != 2:
+            return None
+
+        payload_b64, signature_b64 = parts
+
+        expected_signature = hmac.new(SECRET.encode(), payload_b64, hashlib.sha256).digest()
+        expected_signature_b64 = base64.urlsafe_b64encode(expected_signature)
+
+        if expected_signature_b64 != signature_b64:
+            return None
+
+        decoded = base64.urlsafe_b64decode(payload_b64).decode()
+        prefix, email, exp = decoded.split(":")
+        if prefix != "reset":
+            return None
+        exp = int(exp)
+
+        if exp < int(time.time()):
+            return None
+
+        return email
+
+    except Exception as e:
+        print(f"Error during reset token verification: {e}")
         return None

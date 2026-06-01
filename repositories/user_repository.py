@@ -168,3 +168,11 @@ async def delete_user(user_id):
             await conn.commit()
 
             return curosr.rowcount
+
+async def update_password(email: str, hashed_password: str) -> bool:
+    async with database.pool.acquire() as conn:
+        async with conn.cursor(aiomysql.DictCursor) as cursor:
+            query = "UPDATE users SET password = %s WHERE email = %s"
+            await cursor.execute(query, (hashed_password, email))
+            await conn.commit()
+            return cursor.rowcount > 0

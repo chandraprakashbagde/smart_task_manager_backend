@@ -9,7 +9,9 @@ FIELD_NAMES = {
     "email": "Email",
     "password": "Password",
     "role": "Role",
-    "cpassword": "Confirm Password"
+    "cpassword": "Confirm Password",
+    "new_password": "New Password",
+    "confirm_password": "Confirm Password"
 }
 
 def SuccessResp(message: str = None, data=None):

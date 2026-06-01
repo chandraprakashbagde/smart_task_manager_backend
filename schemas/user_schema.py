@@ -1,8 +1,7 @@
-from pydantic_core import ValidationError, PydanticCustomError
 from typing import Annotated
 from pydantic import BaseModel, EmailStr, model_validator, Field, StringConstraints
 from enum import Enum
-
+from utils.error_handler import custome_validation_error
 
 class UserRole(Enum):
     admin = "Admin"
@@ -19,19 +18,6 @@ NameType = Annotated[
     )
 ]
 
-def custome_validation_error(field: str, message: str):
-   return ValidationError.from_exception_data(
-                title="Validation Error",
-                line_errors=[
-                    {
-                        "type": PydanticCustomError(
-                            "custome-validation-error",
-                            message
-                        ),
-                        "loc": (field,),
-                        "input": "",
-                    }
-                ])
 
 class CreateUser(BaseModel):
     f_name: NameType
@@ -46,7 +32,6 @@ class CreateUser(BaseModel):
         
         if values.cpassword != values.password:
             raise custome_validation_error("cpassword", "Password did not matched")
-            
 
 
         values.email = values.email.lower()
